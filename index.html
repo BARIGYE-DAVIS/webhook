@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OIET - Innovative Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="landing.css">
+  <link rel="stylesheet" href="chatbot.css">
+  <style>
+    /* Additional styles for the chatbot enhancements */
+    .bot-intro {
+      color: #2563eb;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    
+    .message ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    
+    .message ul li {
+      margin: 5px 0;
+      color: #555;
+    }
+    
+    .typing-indicator {
+      opacity: 0.7;
+    }
+    
+    .typing-dots {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    
+    .typing-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #666;
+      animation: typing 1.4s infinite ease-in-out;
+    }
+    
+    .typing-dots span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    
+    .typing-dots span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    
+    @keyframes typing {
+      0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+      }
+      30% {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+    }
+    
+    .quick-replies {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .quick-reply-btn {
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .quick-reply-btn:hover {
+      background: #e0e0e0;
+      border-color: #ccc;
+    }
+    
+    .response-card {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 8px 0;
+      background: #f9f9f9;
+    }
+    
+    .response-card h4 {
+      margin: 0 0 8px 0;
+      color: #333;
+    }
+    
+    .card-link {
+      display: inline-block;
+      margin-top: 8px;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .card-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* Enhanced chatbot icon */
+    #OIET-chatbot-icon {
+      width: 60px;
+      height: 60px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+    
+    #OIET-chatbot-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    }
+    
+    #OIET-chatbot-icon::before {
+      content: "💬";
+      font-size: 24px;
+      color: white;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      }
+      50% {
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.5), 0 0 0 10px rgba(37, 99, 235, 0.1);
+      }
+      100% {
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      }
+    }
+    
+    /* Update chatbot header to be more minimal since we're using welcome message */
+    .chatbot-header {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 12px 12px 0 0;
+      font-weight: 500;
+    }
+    
+    .chatbot-header span {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <!--<header>
+    <div class="container">
+      <div class="logo">OIET</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Welcome to OIET</h1>
+      <p>Innovative solutions for a better tomorrow.</p>
+      <a href="#contact" class="cta-btn">Get in Touch</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About OIET</h2>
+      <p>
+        OIET is dedicated to delivering cutting-edge technology and business solutions.
+        Our team combines expertise and passion to help you achieve your goals and stay ahead in a rapidly changing world.
+      </p>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="service-list">
+        <div class="service-item">
+          <h3>Consulting</h3>
+          <p>Expert advice to transform your business strategies and operations.</p>
+        </div>
+        <div class="service-item">
+          <h3>Software Development</h3>
+          <p>Custom software solutions tailored to your unique needs.</p>
+        </div>
+        <div class="service-item">
+          <h3>Support & Training</h3>
+          <p>Comprehensive support and training for seamless technology adoption.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>-->
+
+  <!-- Chatbot Icon Button (enhanced with CSS emoji) -->
+  <div id="OIET-chatbot-icon" title="Chat with OIET Assistant"></div>
+
+  <!-- Chatbot Widget (hidden by default) -->
+  <div id="OIET-chatbot-widget" class="hidden">
+    <div class="chatbot-header">
+  
+      <button id="OIET-chatbot-close">&times;</button>
+    </div>
+    <div class="chatbot-messages" id="OIET-chatbot-messages"></div>
+    <form id="OIET-chatbot-form">
+      <input type="text" id="OIET-chatbot-input" placeholder="Type your message..." autocomplete="off" required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+ <!-- <footer>
+    <div class="container">
+      <p>&copy; 2025 OIET. All rights reserved.</p>
+    </div>
+  </footer> -->
+
+  <!-- Include the chatbot JavaScript -->
+  <script src="chatbots.js"></script>
+</body>
+</html>
